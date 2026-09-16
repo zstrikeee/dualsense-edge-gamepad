@@ -45,7 +45,8 @@ body {
 .custom .trigger { background: url(https://i.imgur.com/LsxmGBD.png); width: 111px; height: 108px; opacity: 0; }
 .custom .trigger.right { background-position: -113px 0; transform: rotateY(0); }
 
-/* DualSense Edge rear-paddle indicators, visible beneath the controller body. */
+/* DualSense Edge rear-paddle indicators. Positioned on the lower part of the
+   controller artwork instead of floating above it. */
 .custom::before {
     content: "";
     position: absolute;
@@ -56,11 +57,20 @@ body {
     width: 100%;
     height: 100%;
     background:
-      linear-gradient(72deg, transparent 0 26%, #15171b 26.2% 29%, transparent 29.2%) 145px 535px / 140px 72px no-repeat,
-      linear-gradient(-72deg, transparent 0 26%, #15171b 26.2% 29%, transparent 29.2%) 522px 535px / 140px 72px no-repeat;
+      linear-gradient(72deg, transparent 0 23%, #15171b 23.2% 34%, transparent 34.2%) 120px 760px / 175px 105px no-repeat,
+      linear-gradient(-72deg, transparent 0 23%, #15171b 23.2% 34%, transparent 34.2%) 512px 760px / 175px 105px no-repeat;
 }
 
-/* Keep the skin centered and give it room below for the Edge paddles. */
+/* Keep the controller itself in the normal Gamepad Viewer canvas so its lower
+   half is not clipped by the page. */
 .controller.custom {
-    top: 620px !important;
+    top: 0 !important;
+}
+
+/* Put the Z STRIKER logo on the controller/touchpad area.
+   The controller artwork has transparent space above the physical body, so
+   the logo must be positioned much lower than the top of the CSS box. */
+.controller.custom {
+    background-position: center center, center 650px;
+    background-size: auto auto, 220px 100px;
 }
